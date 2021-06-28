@@ -2,8 +2,9 @@
 #include<string.h>
 #include<stdlib.h>
 #include<ctype.h>
+#include<conio.h>
 
-char clear[10]="clear";  //Command to clear the screen. Depends from os to os
+//char clear[10]="cls";  //Command to clear the screen. Depends from os to os
 struct Contact{
    char name[100],phone[100],email[100];
 }x;
@@ -21,10 +22,10 @@ int isPresentName(char* name);  //Checks if the given name is already present
 int isPresentNumber(char* num);  //Checks if the given number is already present
 
 int main(){
-   START: system(clear);
-   int opt=0; char name[100],ch;
+   START: system("color 1A"); system("cls");
+   char opt=0; char name[100],ch;
    printf("1. Enter new Users\n2. Search for a User\n3. Update a User\n4. Delete a User\n5. Show all Users\n");
-   opt=getchar()-48; getchar();
+   opt=getch()-48;
    switch(opt){
      case 1:{
          printf("\nEnter the number of Users : ");
@@ -54,9 +55,8 @@ int main(){
      case 5:{ ShowALL(); break; }
      default: printf("\nPlease Enter a valid choice");
    }
-   printf("\nDo you wish to continue? (Y/N)");
-   scanf("%c",&ch);
-   if(ch=='y'||ch=='Y'){ getchar(); goto START; }
+   printf("\nDo you wish to continue? (Y/N)"); ch=getch();
+   if(ch=='y'||ch=='Y') goto START;
    return 0;
 }
 
@@ -93,11 +93,12 @@ void Search(char* str){
    int cnt=0;
    if(fptr!=NULL){
      while(fread(&x, sizeof(x), 1, fptr)){
-        if(strcmp(x.name,str)==0 || strstr(x.name,str) || strcmp(x.email,str)==0 || strstr(x.email,str) || strcmp(x.phone,str)==0 || strstr(x.phone,str)){
-            Disp(x); cnt++;
+        if(!strcmp(x.name,str) || !strcmp(x.email,str) || !strcmp(x.phone,str) || strstr(x.name,str) || strstr(x.phone,str) || strstr(x.email,str)){
+            Disp(x); 
+			cnt++;
         }
      }
-     if(!cnt) printf("\nThere are no such users\n");
+     if(!cnt) printf("\nUser doesn't exist\n");
      else printf("\nThere are %d users in total\n",cnt);
      fclose(fptr);
    }
@@ -126,9 +127,9 @@ void Update(char* str){
         if(strcmp(x.name,str)==0 || strcmp(x.email,str)==0 || strcmp(x.phone,str)==0){
             isFound=1;
             fseek(fptr,(-1)*sizeof(x),SEEK_CUR);
-            system(clear);
+            system("cls"); system("color 0A");
             printf("What do you want to Update?\n1. Name\n2. Phone Number\n3. Email\n");
-            opt=getchar()-48; getchar();
+            opt=getch()-48;
             check: switch(opt){
                case 1:{
                   nameUP: printf("\nEnter the Name : "); scanf("%[^\n]%*c", x.name);
@@ -147,8 +148,8 @@ void Update(char* str){
                   getchar(); break;
                }
                default: {
-                  printf("\nPlease enter a valid choice or enter any value to exit");
-                  scanf("%d",&opt); getchar();
+                  printf("\nPlease enter a valid choice or press any key to exit");
+                  opt=getch()-48;
                   if(opt==1 || opt==2 || opt==3) goto check;
                   else{
                      fclose(fptr);
