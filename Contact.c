@@ -8,17 +8,17 @@ struct Contact{
    char name[100],phone[100],email[100];
 }x;
 
-void Input(struct Contact*); //Inputs the data from user
-void Disp(struct Contact); //Display the function yo user
-void Insert(int);  //Write a record to .dat file
-void Delete(char*);  //Delete a record from the .dat file
-void Update(char*);  //Updates a record
-void Search(char*);  //Search a record
-void ShowALL();  //Shows the list of all existing records
-int isValidNum(char*); //Validates a Phone Number
-int isPresentMail(char*);  //Checks if the given mail id is already present
-int isPresentName(char*);  //Checks if the given name is already present
-int isPresentNumber(char*);  //Checks if the given number is already present
+void Input(struct Contact*); //Inputs the data from user. Defined by Swagatam Burai
+void Disp(struct Contact); //Display the function yo user. Defined by Swagatam Burai
+void Insert(int);  //Write a record to .dat file. Defined by Sautik Mitra
+void Delete(char*);  //Delete a record from the .dat file. Defined by Saptarshi Dey
+void Update(char*);  //Updates a record. Defined by Saptarshi Dey
+void Search(char*);  //Search a record. Defined by Dipanjan Biswas
+void ShowALL();  //Shows the list of all existing records. Defined by Dipanjan Biswas
+int isValidNum(char*); //Validates a Phone Number. Defined by Rishav Gupta
+int isPresentMail(char*);  //Checks if the given mail id is already present. Defined by Saptarshi Dey
+int isPresentName(char*);  //Checks if the given name is already present. Defined by Saptarshi Dey
+int isPresentNumber(char*);  //Checks if the given phone number is already present. Defined by Rishav Gupta
 
 int main(){
    START: system(clear);
