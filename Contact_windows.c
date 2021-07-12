@@ -9,17 +9,17 @@ struct Contact{
    char name[100],phone[100],email[100];
 }x;
 
-void Input(struct Contact *x); //Inputs the data from user
-void Disp(struct Contact x); //Display the function yo user
-void Insert(int n);  //Write a record to .dat file
-void Delete(char* str);  //Delete a record from the .dat file
-void Update(char* str);  //Updates a record
-void Search(char* str);  //Search a record
+void Input(struct Contact*); //Inputs the data from user
+void Disp(struct Contact); //Display the function yo user
+void Insert(int);  //Write a record to .dat file
+void Delete(char*);  //Delete a record from the .dat file
+void Update(char*);  //Updates a record
+void Search(char*);  //Search a record
 void ShowALL();  //Shows the list of all existing records
-int isValidNum(char *num); //Validates a Phone Number
-int isPresentMail(char* mail);  //Checks if the given mail id is already present
-int isPresentName(char* name);  //Checks if the given name is already present
-int isPresentNumber(char* num);  //Checks if the given number is already present
+int isValidNum(char*); //Validates a Phone Number
+int isPresentMail(char*);  //Checks if the given mail id is already present
+int isPresentName(char*);  //Checks if the given name is already present
+int isPresentNumber(char*);  //Checks if the given number is already present
 
 int main(){
    START: system("color 1A"); system("cls");
